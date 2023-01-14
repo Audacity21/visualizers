@@ -10,6 +10,7 @@
     justify-content: space-evenly;
     align-items: center;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    z-index: 1;
 }
 .sv__appbar__title{
     font-size: 24px;
@@ -29,8 +30,14 @@
 .sort{
     background-color: #B8B3BE;
 }
+.sort:hover{
+    background-color: #827f86;
+}
 .reset{
     background-color: #BFD0E0;
+}
+.reset:hover{
+    background-color: #e99797;
 }
 .sv__appbar__algo__select{
     font-size: 1.2rem;
@@ -40,4 +47,17 @@
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
+}
+
+
+.sv__array{
+    display: flex;
+    justify-content: center;
+    z-index: -1;
+}
+.sv__array__bar{
+    background-color: #5DFDCB;
+    width: 0.75vw;
+    z-index: -1;
+    margin: 0 0.05vw;
 }
