@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SortingVisualizer.css";
 
 const SVNavbar = () => {
+  const [size, setSize] = useState(50);
+
+  const handleSlide = (e) => {
+    setSize(e.target.value);
+  };
+
   return (
     <div>
       <div className="sv__appbar">
@@ -13,7 +19,13 @@ const SVNavbar = () => {
         <div className="sv__appbar__speed">
           <div className="sv__appbar__speed__title">Speed</div>
           <div className="sv__appbar__speed__slider">
-            <input type="range" min="1" max="100" />
+            <input
+              type="range"
+              min="5"
+              max="99"
+              onChange={(e) => handleSlide(e)}
+            />
+            {size}
           </div>
         </div>
         <div className="sv__appbar__algo">
