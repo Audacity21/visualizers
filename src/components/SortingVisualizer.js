@@ -30,6 +30,10 @@ const SortingVisualizer = () => {
               newArr[j] = newArr[j + 1];
               newArr[j + 1] = temp;
               setTimeout(() => {
+                document.getElementById(j).style.backgroundColor =
+                  "rgb(158 164 249)";
+                document.getElementById(j + 1).style.backgroundColor =
+                  "rgb(74 86 241)";
                 setArray([...newArr]);
               }, j * 50);
             }
@@ -101,6 +105,7 @@ const SortingVisualizer = () => {
   const generateArray = () => {
     const newArray = [];
     for (let i = 0; i < size; i++) {
+      document.getElementById(i).style.backgroundColor = "#5DFDCB";
       newArray.push(Math.floor(Math.random() * 95 + 5));
     }
     setArray(newArray);
@@ -144,8 +149,8 @@ const SortingVisualizer = () => {
             onChange={(e) => optionsHandler(e)}
           >
             <option value="bubble">Bubble Sort</option>
-            <option value="insertion">Insertion Sort</option>
             <option value="selection">Selection Sort</option>
+            <option value="insertion">Insertion Sort</option>
           </select>
         </div>
       </div>
@@ -155,6 +160,7 @@ const SortingVisualizer = () => {
           <div
             className="sv__array__bar"
             key={index}
+            id={index}
             style={{ height: `${value * 5}px`, width: `${75 / size}%` }}
           ></div>
         ))}
