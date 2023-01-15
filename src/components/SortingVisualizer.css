@@ -60,3 +60,34 @@
     z-index: -1;
     margin: 0 0.05vw;
 }
+
+@media screen and (max-width: 750px) {
+    .sv__appbar__algo__select{
+        font-size: 1rem;
+    }
+    .sv__appbar__button{
+        font-size: 1rem;
+    }
+    .sv__appbar__title{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .sv__appbar__algo__select{
+        font-size: 0.8rem;
+    }
+    .sv__appbar__button{
+        font-size: 0.8rem;
+    }
+    .sv__appbar{
+        height: 120px;
+        flex-wrap: wrap;
+    }
+    .sv__appbar__buttons{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        
+    }
+}
