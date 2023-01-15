@@ -55,6 +55,27 @@ const SortingVisualizer = () => {
     }, 50);
   };
 
+  const insertionSort = async () => {
+    setTimeout(() => {
+      let newArr = [...array];
+      for (let i = 1; i < newArr.length; i++) {
+        setTimeout(() => {
+          let key = newArr[i];
+          let j = i - 1;
+
+          while (j >= 0 && newArr[j] > key) {
+            newArr[j + 1] = newArr[j];
+            j = j - 1;
+          }
+          newArr[j + 1] = key;
+          setTimeout(() => {
+            setArray([...newArr]);
+          }, i * 50);
+        }, i * 100);
+      }
+    }, 50);
+  };
+
   useEffect(() => {
     const newArray = [];
     for (let i = 0; i < size; i++) {
@@ -68,7 +89,7 @@ const SortingVisualizer = () => {
       <div className="sv__appbar">
         <div className="sv__appbar__title">Sorting Visualizer</div>
         <div className="sv__appbar__buttons">
-          <button className="sv__appbar__button sort" onClick={selectionSort}>
+          <button className="sv__appbar__button sort" onClick={insertionSort}>
             START
           </button>
           <button className="sv__appbar__button reset" onClick={handleReset}>
