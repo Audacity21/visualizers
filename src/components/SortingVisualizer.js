@@ -9,6 +9,30 @@ const SortingVisualizer = () => {
     setSize(e.target.value);
   };
 
+  const handleReset = () => {
+    window.location.reload();
+  };
+
+  const bubbleSort = async () => {
+    setTimeout(() => {
+      let newArr = [...array];
+      for (let i = 0; i < newArr.length; i++) {
+        setTimeout(() => {
+          for (let j = 0; j < newArr.length - i - 1; j++) {
+            if (newArr[j] > newArr[j + 1]) {
+              let temp = newArr[j];
+              newArr[j] = newArr[j + 1];
+              newArr[j + 1] = temp;
+              setTimeout(() => {
+                setArray([...newArr]);
+              }, j * 50);
+            }
+          }
+        }, i * 100);
+      }
+    }, 50);
+  };
+
   useEffect(() => {
     const newArray = [];
     for (let i = 0; i < size; i++) {
@@ -22,8 +46,12 @@ const SortingVisualizer = () => {
       <div className="sv__appbar">
         <div className="sv__appbar__title">Sorting Visualizer</div>
         <div className="sv__appbar__buttons">
-          <button className="sv__appbar__button sort">START</button>
-          <button className="sv__appbar__button reset">RESET</button>
+          <button className="sv__appbar__button sort" onClick={bubbleSort}>
+            START
+          </button>
+          <button className="sv__appbar__button reset" onClick={handleReset}>
+            RESET
+          </button>
         </div>
         <div className="sv__appbar__speed">
           <div className="sv__appbar__speed__title">Speed</div>
