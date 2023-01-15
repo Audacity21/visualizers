@@ -4,6 +4,12 @@ import "./SortingVisualizer.css";
 const SortingVisualizer = () => {
   const [size, setSize] = useState(50);
   const [array, setArray] = useState([]);
+  const [options, setOptions] = useState("");
+
+  const optionsHandler = (e) => {
+    setOptions(e.target.value);
+    console.log(e.target.value);
+  };
 
   const handleSlide = (e) => {
     setSize(e.target.value);
@@ -76,6 +82,22 @@ const SortingVisualizer = () => {
     }, 50);
   };
 
+  const algoSelect = () => {
+    switch (options) {
+      case "bubble":
+        bubbleSort();
+        break;
+      case "insertion":
+        insertionSort();
+        break;
+      case "selection":
+        selectionSort();
+        break;
+      default:
+        bubbleSort();
+    }
+  };
+
   useEffect(() => {
     const newArray = [];
     for (let i = 0; i < size; i++) {
@@ -89,7 +111,7 @@ const SortingVisualizer = () => {
       <div className="sv__appbar">
         <div className="sv__appbar__title">Sorting Visualizer</div>
         <div className="sv__appbar__buttons">
-          <button className="sv__appbar__button sort" onClick={insertionSort}>
+          <button className="sv__appbar__button sort" onClick={algoSelect}>
             START
           </button>
           <button className="sv__appbar__button reset" onClick={handleReset}>
@@ -109,11 +131,12 @@ const SortingVisualizer = () => {
           </div>
         </div>
         <div className="sv__appbar__algo">
-          <select className="sv__appbar__algo__select">
+          <select
+            className="sv__appbar__algo__select"
+            onChange={(e) => optionsHandler(e)}
+          >
             <option value="bubble">Bubble Sort</option>
             <option value="insertion">Insertion Sort</option>
-            <option value="merge">Merge Sort</option>
-            <option value="quick">Quick Sort</option>
             <option value="selection">Selection Sort</option>
           </select>
         </div>
