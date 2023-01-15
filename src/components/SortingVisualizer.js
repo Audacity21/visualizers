@@ -16,7 +16,7 @@ const SortingVisualizer = () => {
   };
 
   const handleReset = () => {
-    window.location.reload();
+    generateArray();
   };
 
   const bubbleSort = async () => {
@@ -96,6 +96,14 @@ const SortingVisualizer = () => {
       default:
         bubbleSort();
     }
+  };
+
+  const generateArray = () => {
+    const newArray = [];
+    for (let i = 0; i < size; i++) {
+      newArray.push(Math.floor(Math.random() * 95 + 5));
+    }
+    setArray(newArray);
   };
 
   useEffect(() => {
